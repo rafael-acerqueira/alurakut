@@ -1,13 +1,20 @@
 import MainGrid from '../components/MainGrid'
 import Box from '../components/Box'
-import { AlurakutMenu, OrkutNostalgicIconSet } from '../lib/AlurakutCommons'
+import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from '../lib/AlurakutCommons'
 import { ProfileRelationsBoxWrapper} from '../components/ProfileRelations'
 
-function ProfileSidebar() {
-  const githubUser = 'rafael-acerqueira'
+function ProfileSidebar({ githubUser }) {
   return(
     <Box>
-      <img src={`https://github.com/${githubUser}.png`} />
+      <img src={`https://github.com/${githubUser}.png`} style={{borderRadius: '8px' }}/>
+      <hr />
+
+      <a className='boxLink' href={`https://github.com/${githubUser}`}>
+        @{githubUser}
+      </a>
+      <hr />
+
+      <AlurakutProfileSidebarMenuDefault />
     </Box>
   )
 }
@@ -27,7 +34,7 @@ export default function Home() {
       <AlurakutMenu />
       <MainGrid>
         <div className='profileArea'>
-          <ProfileSidebar />
+          <ProfileSidebar githubUser='rafael-acerqueira'/>
         </div>
         <div className='welcomeArea'>
           <Box>
