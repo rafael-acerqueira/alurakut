@@ -1,6 +1,7 @@
 import MainGrid from '../components/MainGrid'
 import Box from '../components/Box'
 import { AlurakutMenu } from '../lib/AlurakutCommons'
+import { ProfileRelationsBoxWrapper} from '../components/ProfileRelations'
 
 function ProfileSidebar() {
   const githubUser = 'rafael-acerqueira'
@@ -12,6 +13,13 @@ function ProfileSidebar() {
 }
 
 export default function Home() {
+  const favoritesPeople = [
+    'rafael-acerqueira',
+    'maugravena',
+    'reginadiana',
+    'oliveira-matheus'
+  ]
+
   return(
     <>
       <AlurakutMenu />
@@ -25,12 +33,19 @@ export default function Home() {
           </Box>
         </div>
         <div className='profileRelationsArea'>
-          <Box >
-            terceiro
-          </Box>
-          <Box >
-            quarto
-          </Box>
+          <ProfileRelationsBoxWrapper>
+            <h2 className='smallTitle'>Pessoas da Comunidade ({favoritesPeople.length})</h2>
+            <ul>
+              {favoritesPeople.map(person => (
+                  <li key={person}>
+                  <a href={`/users/${person}`} key={person}>
+                    <img src={`https://github.com/${person}.png`} />
+                    <span>{person}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </ProfileRelationsBoxWrapper>
         </div>
       </MainGrid>
     </>
